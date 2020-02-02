@@ -9,16 +9,16 @@ void main()
 	
 	TMOD=0x01;
 	TR0=1;//turn on the timer.
-	TL0=0x27;//calculate the initial value of 20 milliseconds.
-	TH0=0xFF;
+	TL0=0x00;//calculate the initial value of 20 milliseconds.
+	TH0=0x28;
 	
 	while(1)
 	{
 		if(TF0==1)//return to position after each loop.
 		{
 			TF0=0;
-			TH0=0x27;
-			TL0=0xFF;
+			TH0=0x28;
+			TL0=0x00;
 			time++;
 			if(time>=50)//light the led every second.
 			{
