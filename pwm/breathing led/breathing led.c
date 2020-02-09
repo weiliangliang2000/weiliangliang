@@ -1,5 +1,5 @@
 #include <STC89C5xRC.H>    //this is a breathing led.i think it is a successful production,but its effect is very quickly.
-sbit pwm=P0^0;
+sbit pwm=P1^3;
 sbit ENLED=P1^1;
 sbit A0=P2^0;             //turn on LEDS6.
 sbit A1=P2^1;
@@ -31,8 +31,8 @@ void main()
 	ENLED=0;
 	A0=0;A1=1;A2=1;
 	
-	configpwm(3000,10);           //3000hz------10% duty cycle.
-	configtimer(10000);
+	configpwm(300,10);           //3000hz------10% duty cycle.
+	configtimer(500);
 	while(1) ;
 }		                                         
 configpwm(unsigned char hz,unsigned char dc)    // claculate timer automatically.
