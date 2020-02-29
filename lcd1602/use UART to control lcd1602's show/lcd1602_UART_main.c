@@ -1,4 +1,4 @@
-#include <STC89C5xRC.H>
+#include <STC89C5xRC.H>// 串口发送的数据显示到LCD当中 
 unsigned char date[10];
 unsigned char cotrxt=0,x=0;
 void config_uart(unsigned int baud);
@@ -50,9 +50,9 @@ void interrupt_uart()  interrupt 4
 	if(RI==1)
 {
 	RI=0;
-	if(x<10)
+	if(x<10)//将串口发送的数据储存在数组当中 
 	{
-		date[x]=SBUF;    //send date by UART and let lcd1602 show date.
+		date[x]=SBUF;    //send data by UART and let lcd1602 show data.
 		x++;
 	}
 		if(x==9)

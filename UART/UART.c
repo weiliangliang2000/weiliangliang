@@ -16,7 +16,7 @@ void main()
 	configtimer0(1);     //timing 1 millisecond.
 	configUART(9600);    //baud=9600.
 	
-	while(1)
+	while(1)//通过串口输入数字，让其在数码管上显示 
 	{
 		ledbuff[0]=ledchar[byte&0x0F];   //display nixie tube.   led numer transform hexadecimal.
 		ledbuff[1]=ledchar[byte>>4];      
@@ -34,7 +34,7 @@ void configtimer0(unsigned int ms)    //timing 1 millisecond.
 	TR0=1;
 	ET0=1;
 }
-void configUART(unsigned int baud)   //calcualte baud
+void configUART(unsigned int baud)   //calcualte baud  计算波特率 
 {
 	SCON=0x50;
 	TMOD=0x20;
@@ -44,7 +44,7 @@ void configUART(unsigned int baud)   //calcualte baud
 	ET1=0;
 	TR1=1;
 }
-void interrupttimer0() interrupt 1
+void interrupttimer0() interrupt 1  //每 1毫秒扫描一次数码管 
 {
 	TH0=T0RH;
 	TL0=T0RL;
@@ -52,7 +52,7 @@ void interrupttimer0() interrupt 1
 }
 void interruptUART() interrupt 4
 {
-	if (RI==1)
+	if (RI==1)//串口传送协议 
 	{
 		RI=0;
 		byte=SBUF;
@@ -67,7 +67,7 @@ void ledscan()  //light the nixie tube.
 {
 	  static unsigned char s=0;
     P0=0xFF;
-		switch (s)
+		switch (s)//将通过串口发送的数据显示到数码管上 
 			{
 				case 0:P20=1;P21=0;P22=1;s++;P0=ledbuff[0];break;
 				case 1:P20=0;P21=0;P22=1;s++;P0=ledbuff[1];break;

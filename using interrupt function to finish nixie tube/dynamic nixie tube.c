@@ -14,7 +14,7 @@ void main()
 		{
 			  in=0;
 				second++;
-				order[0]=i[second%10];
+				order[0]=i[second%10];  //将秒数保存在缓冲区 
 				order[1]=i[second/10%10];
 				order[2]=i[second/100%10];
 				order[3]=i[second/1000%10];
@@ -34,7 +34,7 @@ void interrupttime() interrupt 1 //to refresh the nixie tube every 1 millisecond
 	}
 	
 	P0=0xFF;
-	switch (s)
+	switch (s)//点亮数码管 
 			{
 				case 0:P20=1;P21=0;P22=1;s++;P0=order[0];break;
 				case 1:P20=0;P21=0;P22=1;s++;P0=order[1];break;

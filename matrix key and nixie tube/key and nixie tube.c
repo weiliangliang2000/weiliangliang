@@ -27,16 +27,17 @@ bit buff=1;
 			b=buff;
 			if(b==0)
 			{
-				count++;
+				count++;//每次按键4按下，数字加一 
 				if(count>9)
 				{
 					count=0;
 				}
-				P0=i[count];
+				P0=i[count];//数码管显示按键按下次数 
 			}
 		}
 	}
 }
+//用定时器进行按键消抖 
 void interrupttime() interrupt 1
 {
 	static unsigned char compare=0xFF;

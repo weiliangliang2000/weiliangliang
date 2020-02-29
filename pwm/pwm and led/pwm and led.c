@@ -50,8 +50,8 @@ configpwm(unsigned char hz,unsigned char dc) // claculate timer automatically.
 	timer=(33177600/12)/hz;    
 	high=65536-((timer*dc)/100)+12;
 	low=65536-(timer-high)+12;
-	high_h=(unsigned char)(high>>8);
-	high_l=(unsigned char)high;
+	high_h=(unsigned char)(high>>8);// 将计算出来的数值转化为高8位数字 
+	high_l=(unsigned char)high;     //低8位数字 
 	low_h=(unsigned char)(low>>8);
 	low_l=(unsigned char)low;
 	TMOD=0x01;

@@ -13,7 +13,7 @@ void main()
 		if (in==1)
 		{
 			  in=0;
-				second++;
+				second++;//将秒数保存在缓冲区 
 				order[0]=i[second%10];
 				order[1]=i[second/10%10];
 				order[2]=i[second/100%10];
@@ -34,6 +34,7 @@ void interrupttime() interrupt 1 //to refresh the nixie tube every 1 millisecond
 	}
 	
 	P0=0xFF;
+	//只显示低位有效数字，高位的0不在数码管上显示。 
 	if(second>=0&&second<10)
 	{
 		switch (s)

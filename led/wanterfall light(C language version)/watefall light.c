@@ -9,8 +9,8 @@ void main()
 	P11=0;//enabled
 	while(1)
 	{
-		P0=~(0X01<<z);
-		for (i=0;i<60000;i++);
+		P0=~(0X01<<z);//从左往右依次点亮led 
+		for (i=0;i<60000;i++);//led点亮的时间。 
 		{
 		  z++;
 		}

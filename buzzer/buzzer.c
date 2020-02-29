@@ -26,11 +26,11 @@ void main()
 	EA=1;
 	while(1)
 	{
-		openbuzzer(4000);Delay800ms();//4KHZ --buzzer
-		openbuzzer(1000);Delay800ms();//1KHZ --buzzer.
+		openbuzzer(4000);Delay800ms();//4KHZ --buzzer    4000赫兹 
+		openbuzzer(1000);Delay800ms();//1KHZ --buzzer.   1000赫兹 
 	}
 }
-void openbuzzer(unsigned int frequ)
+void openbuzzer(unsigned int frequ)//以多少频率（frequ）打开蜂鸣器 
 {
 	unsigned int reload;
 	reload=65536-(33177600/12)/(frequ*2);
@@ -41,11 +41,11 @@ void openbuzzer(unsigned int frequ)
 	ET0=1;
 	TR0=1;
 }
-void stopbuzzer()
+void stopbuzzer()//关闭蜂鸣器 
 {
 	ET0=0;TR0=0;
 }
-void interrupt0()  interrupt 1
+void interrupt0()  interrupt 1//蜂鸣器频率 
 {
 	TH0=T0RH;
 	TL0=T0RL;
